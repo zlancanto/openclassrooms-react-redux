@@ -1,5 +1,4 @@
 /* Structure */
-
 let state = {}
 const subscribers = []
 
