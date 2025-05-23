@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="header">
+  Aucun proprio configuré
+</div>
+<form id="addForm" action="#">
+  <input name="firstName"/>
+  <button>Register</button>
+</form>
+<div>
+  <button class="orderButton" data-id="PouletCroquant">Poulet Croquant</button>
+  <button class="orderButton" data-id="DoubleCantal">Double Cantal</button>
+  <button class="orderButton" data-id="SuperCremeux">Super Crémeux</button>
+</div>
+<div>
+  <button id="voucher">Super Crémeux à 2€</button>
+</div>
+<div id="command"></div>
+
+<script src="../logique/redux.js" defer></script>
+<script src="https://unpkg.com/@reduxjs/toolkit@1.9.7/dist/redux-toolkit.umd.js"></script>
+</body>
+</html>
