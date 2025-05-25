@@ -13,7 +13,7 @@ export const Cart: FunctionComponent = () => {
         store.subscribe(() => setList(store.getState().list))
     }, [store]);
 
-    const addProductSuperCremeux = () => {
+    const onAddProductSuperCremeux = () => {
         store.dispatch({
             type: ADD_PRODUCT,
             payload: SuperCremeux
@@ -30,20 +30,8 @@ export const Cart: FunctionComponent = () => {
                     </span>
                 ))
             }
-            <div>
-                <p>
-                    {
-                        list.length === 0
-                            ? 'Aucun produit sélectionné pour le moment'
-                            : `Total commande : 
-                            ${list
-                                .reduce((accumulateur: number, valeurCourante: any) => accumulateur + valeurCourante.price, 0)} 
-                                euros`
-                    }
-                </p>
-            </div>
             <div className="CartNavBar">
-                <button onClick={addProductSuperCremeux}>Add SuperCrémeux</button>
+                <button onClick={onAddProductSuperCremeux}>Add SuperCrémeux</button>
             </div>
         </div>
     )
