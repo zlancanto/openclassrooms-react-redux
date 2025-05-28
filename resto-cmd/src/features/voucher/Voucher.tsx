@@ -1,19 +1,16 @@
 import {FunctionComponent, useEffect, useState} from "react";
-import {useStore} from "react-redux";
+import {useSelector, useStore} from "react-redux";
 import {Action, Store} from "@reduxjs/toolkit";
 import {APPLY_VOUCHER} from "../../common/global_var/redux_actions_types.ts";
 import {SUPER_CREMEUX} from "../../common/global_var/products.ts";
+import {isVoucherAvailable} from "../../app/selectors.ts";
+import {IProduct} from "../../common/interfaces/IProduct.ts";
 
 export const Voucher: FunctionComponent = () => {
 
     const store: Store<any, Action, any> = useStore()
-    const [list, setList] = useState(store.getState().list)
 
-    const available = list.find(product => product.title === SUPER_CREMEUX)
-
-    useEffect(() => {
-        store.subscribe(() => setList(store.getState().list))
-    }, [store]);
+    const available: IProduct = useSelector(isVoucherAvailable)
 
     const onApplyVoucher = () => {
         store.dispatch({

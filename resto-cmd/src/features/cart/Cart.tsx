@@ -2,15 +2,16 @@ import {FunctionComponent, useEffect, useState} from "react";
 import {useStore} from "react-redux";
 import {Action, Store} from "@reduxjs/toolkit";
 import {ADD_PRODUCT} from "../../common/global_var/redux_actions_types.ts";
-import {SuperCremeux} from "../../common/models.ts";
+import {SuperCremeux} from "../../common/products.ts";
+import {getProductList} from "../../app/selectors.ts";
 
 export const Cart: FunctionComponent = () => {
 
     const store: Store<any, Action, any> = useStore()
-    const [list, setList] = useState(store.getState().list)
+    const [list, setList] = useState(getProductList(store.getState()))
 
     useEffect(() => {
-        store.subscribe(() => setList(store.getState().list))
+        store.subscribe(() => setList(getProductList(store.getState())))
     }, [store]);
 
     const onAddProductSuperCremeux = () => {

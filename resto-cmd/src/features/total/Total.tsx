@@ -1,16 +1,12 @@
-import {FunctionComponent, useEffect, useState} from "react";
-import {useStore} from "react-redux";
-import {Action, Store} from "@reduxjs/toolkit";
+import {FunctionComponent} from "react";
+import {useSelector} from "react-redux";
+import {getProductList, getTotalOder} from "../../app/selectors.ts";
+import {IProduct} from "../../common/interfaces/IProduct.ts";
 
 export const Total: FunctionComponent = () => {
 
-    const store: Store<any, Action, any> = useStore()
-    const [list, setList] = useState(store.getState().list)
-    const totalCmd: number = list.reduce((acc: number, currentValue: any) => acc + currentValue.price, 0)
-
-    useEffect(() => {
-        store.subscribe(() => setList(store.getState().list))
-    }, [store]);
+    const list: Array<IProduct> = useSelector(getProductList)
+    const totalCmd: number = useSelector(getTotalOder)
 
     return (
         <div className="TotalCommand">
