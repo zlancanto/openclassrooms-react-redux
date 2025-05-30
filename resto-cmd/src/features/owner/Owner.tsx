@@ -1,21 +1,17 @@
 import {FormEvent, FunctionComponent} from "react";
-import {Action, Store} from "@reduxjs/toolkit";
-import {useSelector, useStore} from "react-redux";
-import {UPDATE_FIRSTNAME} from "../../common/global_var/redux_actions_types.ts";
+import {useDispatch, useSelector} from "react-redux";
 import {getOwner} from "../../app/selectors.ts";
+import {updateFirstNameAction} from "../../app/actions.ts";
 
 export const Owner: FunctionComponent = () => {
 
-    const store: Store<any, Action, any> = useStore()
+    const dispatch = useDispatch()
     const owner  = useSelector(getOwner)
 
     const onUpdateOwner = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const firstName: string = e.currentTarget.firstName.value
-        store.dispatch({
-            type: UPDATE_FIRSTNAME,
-            payload: firstName
-        })
+        dispatch(updateFirstNameAction(firstName))
     }
 
     return (

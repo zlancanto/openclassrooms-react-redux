@@ -4,6 +4,7 @@ import {IProduct} from "../../common/interfaces/IProduct.ts";
 import {Product} from "../../common/components/Product.tsx";
 import {useDispatch} from "react-redux";
 import {ADD_PRODUCT} from "../../common/global_var/redux_actions_types.ts";
+import {addProductAction} from "../../app/actions.ts";
 
 export const Menu: FunctionComponent = () => {
 
@@ -18,10 +19,7 @@ export const Menu: FunctionComponent = () => {
                         <Product
                             key={index}
                             product={product}
-                            onSelect={() => dispatch({
-                                type: ADD_PRODUCT,
-                                payload: product
-                            })}/>
+                            onSelect={() => dispatch(addProductAction(product))}/>
                     ))
             }
         </div>
